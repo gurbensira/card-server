@@ -1,6 +1,6 @@
 {
     "TOKEN_GENERATOR": "jwt",
-    "LOGGER": "morgan",
+    "LOGGER": "simple",
     "VALIDATOR": "joi",
     "DB_ENVIROMENT": "local"
 }
