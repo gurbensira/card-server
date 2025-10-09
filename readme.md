@@ -107,9 +107,14 @@ This creates:
 
 ## Running the Application
 
-**Development mode:**
+**Production mode:**
 ```bash
 npm start
+```
+
+**Development mode:**
+```bash
+npm run dev
 ```
 
 The server will start on `http://localhost:3000` (or your configured PORT).
