@@ -32,7 +32,6 @@ app.use((error, req, res, next) => {
 });
 
 app.listen(port, () => {
-    //התחלת הרצת השרת והאזנה לפורט ספציפי
     console.log(chalk.blueBright(`Server is listening to port ${port}`));
     connectToDb();
 });

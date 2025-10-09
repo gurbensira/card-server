@@ -9,7 +9,6 @@ import {
     updateCardInDb,
 } from "./cardsDataService.js";
 
-//get all
 export const getAllCards = async () => {
     try {
         const cards = await getAllCardsFromDb();
@@ -19,7 +18,6 @@ export const getAllCards = async () => {
     }
 };
 
-//get one by id
 export const getCardById = async (id) => {
     try {
         const card = await getCardByIdFromDb(id);
@@ -29,7 +27,6 @@ export const getCardById = async (id) => {
     }
 };
 
-//create
 export const createNewCard = async (card, userId) => {
     try {
         card.bizNumber = await generateBizNumber();
@@ -47,7 +44,6 @@ export const createNewCard = async (card, userId) => {
     }
 };
 
-//update
 export const updateCard = async (cardId, newCard, userId) => {
     try {
         const existingCard = await getCardByIdFromDb(cardId);
@@ -68,7 +64,6 @@ export const updateCard = async (cardId, newCard, userId) => {
     }
 };
 
-//delete
 export const deleteCard = async (id) => {
     try {
         const idOfDeletedCard = await deleteCardInDb(id);
@@ -78,7 +73,6 @@ export const deleteCard = async (id) => {
     }
 };
 
-//get all my cards
 export const getAllMyCards = async (userId) => {
     try {
         const cards = await getAllCardsByUserIdFromDb(userId);
@@ -88,7 +82,6 @@ export const getAllMyCards = async (userId) => {
     }
 };
 
-//toggleLike
 export const toggleLikeCard = async (cardId, userId) => {
     try {
         const card = await getCardByIdFromDb(cardId);

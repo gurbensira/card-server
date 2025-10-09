@@ -30,7 +30,6 @@ router.get("/", auth, async (req, res) => {
     try {
         const user = req.user;
 
-        // Only admin can get all users
         if (!user.isAdmin) {
             return res.status(403).send("Admin access required");
         }
@@ -122,7 +121,6 @@ router.delete("/:id", auth, async (req, res) => {
         const { id } = req.params;
         const user = req.user;
 
-        // Authorization check
         if (!user.isAdmin && user._id !== id) {
             return res.status(403).send("Only admin or account owner can delete user");
         }

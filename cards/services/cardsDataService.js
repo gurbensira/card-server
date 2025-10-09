@@ -1,6 +1,5 @@
 import Card from "../models/Card.js";
 
-//get all
 export const getAllCardsFromDb = async () => {
     try {
         const cards = await Card.find();
@@ -17,7 +16,6 @@ export const getAllCardsFromDb = async () => {
     }
 };
 
-//get one by id
 export const getCardByIdFromDb = async (id) => {
     try {
         const card = await Card.findById(id);
@@ -44,7 +42,6 @@ export const getCardByIdFromDb = async (id) => {
     }
 };
 
-//create
 export const createCard = async (card) => {
     try {
         const cardForDb = new Card(card);
@@ -70,12 +67,11 @@ export const createCard = async (card) => {
     }
 };
 
-//update -> gets id and new card and return new card
 export const updateCardInDb = async (id, newCard) => {
     try {
         const cardAfterUpdate = await Card.findByIdAndUpdate(id, newCard, {
             new: true,
-            runValidators: true, // וידוא שהנתונים החדשים עוברים ולידציה
+            runValidators: true,
         });
         if (!cardAfterUpdate) {
             throw new Error("Card not found");
@@ -107,7 +103,6 @@ export const updateCardInDb = async (id, newCard) => {
     }
 };
 
-//delete -> gets id and return id
 export const deleteCardInDb = async (id) => {
     try {
         const deletedCard = await Card.findByIdAndDelete(id);
@@ -134,7 +129,6 @@ export const deleteCardInDb = async (id) => {
     }
 };
 
-//get card by biz number
 export const getCardByBizNumber = async (bizNumber) => {
     try {
         const card = await Card.findOne({ bizNumber });
@@ -152,7 +146,6 @@ export const getCardByBizNumber = async (bizNumber) => {
     }
 };
 
-//get all cards by user id
 export const getAllCardsByUserIdFromDb = async (userId) => {
     try {
         const cards = await Card.find({ user_id: userId });

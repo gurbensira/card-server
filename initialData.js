@@ -73,11 +73,9 @@ const seedDatabase = async () => {
         await mongoose.connect(process.env.LOCAL_DB);
         console.log('Connected to MongoDB');
 
-        // Clear existing data (optional)
         await User.deleteMany({});
         await Card.deleteMany({});
 
-        // Create users
         const createdUsers = [];
         for (let userData of initialUsers) {
             userData.password = generatePassword(userData.password);
@@ -87,10 +85,8 @@ const seedDatabase = async () => {
             console.log(`Created user: ${userData.email}`);
         }
 
-        // Get the business user ID for creating cards
         const businessUser = createdUsers.find(u => u.isBusiness);
 
-        // Create 3 cards for the business user
         const initialCards = [
             {
                 title: "Tech Solutions",

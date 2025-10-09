@@ -1,6 +1,5 @@
 import User from "../models/User.js";
 
-//get all
 export const getAllUsersFromDb = async () => {
     try {
         const users = await User.find();
@@ -17,7 +16,6 @@ export const getAllUsersFromDb = async () => {
     }
 };
 
-//get one by id
 export const getUserByIdFromDb = async (id) => {
     try {
         const user = await User.findById(id);
@@ -44,8 +42,6 @@ export const getUserByIdFromDb = async (id) => {
     }
 };
 
-
-//create
 export const createUser = async (user) => {
     try {
         const userForDb = new User(user);
@@ -75,7 +71,7 @@ export const updateUserInDb = async (id, newUser) => {
     try {
         const userAfterUpdate = await User.findByIdAndUpdate(id, newUser, {
             new: true,
-            runValidators: true, // הוספתי runValidators כדי לוודא שהנתונים החדשים עוברים ולידציה
+            runValidators: true,
         });
         if (!userAfterUpdate) {
             throw new Error("User not found");

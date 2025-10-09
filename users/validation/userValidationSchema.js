@@ -3,7 +3,6 @@ import Joi from "joi";
 const urlRegex =
     /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/;
 
-// Schema for user registration (all required fields match User model)
 const userRegistrationSchema = Joi.object({
     name: Joi.object().keys({
         first: Joi.string().min(2).max(256).required(),
@@ -49,7 +48,6 @@ const userRegistrationSchema = Joi.object({
         .required(),
 });
 
-// Schema for user login (only email and password required)
 export const userLoginSchema = Joi.object({
     email: Joi.string()
         .ruleset.pattern(
@@ -64,7 +62,6 @@ export const userLoginSchema = Joi.object({
         }),
 });
 
-// Schema for user update (all fields optional, but validated if present)
 export const userUpdateSchema = Joi.object({
     name: Joi.object().keys({
         first: Joi.string().min(2).max(256),
@@ -104,6 +101,6 @@ export const userUpdateSchema = Joi.object({
             alt: Joi.string().min(2).max(256).allow(""),
         })
     ,
-}).min(1); // At least one field must be present
+}).min(1);
 
 export default userRegistrationSchema;

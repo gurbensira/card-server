@@ -67,7 +67,6 @@ router.delete("/:id", auth, async (req, res) => {
         const { id } = req.params;
         const user = req.user;
 
-        // בדיקה אם המשתמש הוא אדמין או הבעלים של הכרטיס
         const card = await getCardByIdFromDb(id);
         if (!user.isAdmin && card.user_id.toString() !== user._id) {
             return res.status(403).send("Only Admin user or owner of card can delete it");

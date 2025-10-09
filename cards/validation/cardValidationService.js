@@ -7,6 +7,3 @@ export const validateCard = (card) => {
 export const validateCardUpdate = (card) => {
     return cardUpdateSchema.validate(card);
 };
-//משימה
-//למנוע הכנסת כרטיס לא תקין למסד הנתונים
-//יש להדפיס בקונסול את הסיבה לשגיאה
